@@ -1,4 +1,6 @@
 
+QT += network
+
 HEADERS += \
     $$PWD/emailaddress.h \
     $$PWD/email.h

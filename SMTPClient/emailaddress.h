@@ -10,17 +10,17 @@ class EmailAddress
 {
 public:
     EmailAddress();
-    EmailAddress(QString name, QString address);
-
-    QString name() const;
-    void setName(const QString &name);
+    EmailAddress(QString address, QString password = "");
 
     QString address() const;
     void setAddress(const QString &address);
 
+    QString password() const;
+    void setPassword(const QString &password);
+
 private:
-    QString name_;
     QString address_;
+    QString password_;
 };
 
 #endif // EMAILADDRESS_H
