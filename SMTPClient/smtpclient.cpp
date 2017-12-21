@@ -1,23 +1,13 @@
 #include "smtpclient.h"
 
-SMTPClient::SMTPClient()
-{
-    initialize();
-}
-
+/**
+ * @brief Set the values, create the QSslSocket object and make the connections.
+ */
 SMTPClient::SMTPClient(QString host, int port, int timeout)
 {
-    initialize();
-
-    this->host_ = host;
-    this->port_ = port;
-    this->timeout_ = timeout;
-}
-
-void SMTPClient::initialize()
-{
-    this->port_ = 465;
-    this->timeout_ = 30000;
+    host_ = host;
+    port_ = port;
+    timeout_ = timeout;
 
     socket_ = new QSslSocket(this);
 
@@ -32,7 +22,7 @@ SMTPClient::~SMTPClient()
 
 void SMTPClient::sendEmail(Email email)
 {
-    this->email_ = email;
+    email_ = email;
 
     QString newContent = "To: " + email_.receiver().address() + "\n"; // To
     newContent.append("From: " + email_.sender().address() + "\n");   // From
@@ -42,7 +32,7 @@ void SMTPClient::sendEmail(Email email)
     newContent.replace(QString::fromLatin1("\n"), QString::fromLatin1("\r\n"));
     newContent.replace(QString::fromLatin1("\r\n.\r\n"), QString::fromLatin1("\r\n..\r\n"));
 
-    this->email_.setContent(newContent);
+    email_.setContent(newContent);
 
     state_ = Init;
 

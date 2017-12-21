@@ -12,24 +12,20 @@ namespace Status {
         Success,
         Failed
     };
-};
+}
 
 /**
- * @brief The SMTPClient class
+ * @brief The SMTPClient class is used to
  */
 class SMTPClient : public QObject
 {
     Q_OBJECT
 public:
-    SMTPClient();
     SMTPClient(QString host, int port, int timeout = 30000);
 
     ~SMTPClient();
 
     void sendEmail(Email email);
-
-private:
-    void initialize();
 
 signals:
     void status(Status::e status, QString errorMessage = "");
