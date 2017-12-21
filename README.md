@@ -15,7 +15,6 @@ Then you can include the headers in your code:
 ```cpp
 #include "SMTPClient/email.h"
 #include "SMTPClient/smtpclient.h"
-#include "SMTPClient/emailaddress.h"
 ```
 
 And send the e-mail, for example:
@@ -39,11 +38,17 @@ void MainWindow::sendEmail()
     client_ = new SMTPClient("smtp.gmail.com", 465);
 
     // Connection used to receive the results
-    connect(client_, SIGNAL(status(Status::e, QString)), this, SLOT(onStatus(Status::e, QString)), Qt::UniqueConnection);
+    connect(client_, SIGNAL(status(Status::e, QString)),
+            this, SLOT(onStatus(Status::e, QString)), Qt::UniqueConnection);
 
     // Try to send the email
     client_->sendEmail(email);
 }
 ```
 
+## License
+
+This project was created under the [GNU General Public License v3.0][2].
+
  [1]: https://pt.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
+ [2]: LICENSE
