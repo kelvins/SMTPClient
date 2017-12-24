@@ -6,8 +6,8 @@ EmailAddress::EmailAddress()
 
 EmailAddress::EmailAddress(QString address, QString password)
 {
-    this->address_  = address;
-    this->password_ = password;
+    address_  = address;
+    password_ = password;
 }
 
 QString EmailAddress::address() const

@@ -6,10 +6,10 @@ Email::Email()
 
 Email::Email(EmailAddress sender, EmailAddress receiver, QString subject, QString content)
 {
-    this->sender_   = sender;
-    this->receiver_ = receiver;
-    this->subject_  = subject;
-    this->content_  = content;
+    sender_   = sender;
+    receiver_ = receiver;
+    subject_  = subject;
+    content_  = content;
 }
 
 QString Email::content() const
