@@ -10,26 +10,35 @@ class Email
 {
 public:
     Email();
-    Email(EmailAddress sender, EmailAddress receiver, QString subject, QString content);
 
-    QString content() const;
-    void setContent(const QString &content);
+    Email(EmailAddress credentials,
+          EmailAddress from,
+          EmailAddress to,
+          QString subject,
+          QString content);
+
+    EmailAddress credentials() const;
+    void setCredentials(const EmailAddress &credentials);
+
+    EmailAddress from() const;
+    void setFrom(const EmailAddress &from);
+
+    EmailAddress to() const;
+    void setTo(const EmailAddress &to);
 
     QString subject() const;
     void setSubject(const QString &subject);
 
-    EmailAddress sender() const;
-    void setSender(const EmailAddress &sender);
-
-    EmailAddress receiver() const;
-    void setReceiver(const EmailAddress &receiver);
+    QString content() const;
+    void setContent(const QString &content);
 
 private:
     QString content_;
     QString subject_;
 
-    EmailAddress sender_;
-    EmailAddress receiver_;
+    EmailAddress credentials_;
+    EmailAddress from_;
+    EmailAddress to_;
 };
 
 #endif // EMAIL_H

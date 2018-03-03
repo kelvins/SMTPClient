@@ -4,7 +4,8 @@
 #include <QString>
 
 /**
- * @brief The EmailAddress class is used to store a name and an address.
+ * @brief The EmailAddress class is used to store a email address
+ * and a password when necessary.
  */
 class EmailAddress
 {
