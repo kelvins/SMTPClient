@@ -1,6 +1,7 @@
 #ifndef SMTPCLIENT_H
 #define SMTPCLIENT_H
 
+#include <QTimer>
 #include <QObject>
 #include <QtNetwork/QSslSocket>
 #include <QtNetwork/QAbstractSocket>
@@ -20,8 +21,13 @@ namespace Status {
 class SMTPClient : public QObject
 {
     Q_OBJECT
+
 public:
-    SMTPClient(QString host, int port, int timeout = 30000);
+    // Default port 25 or 465 for cryptography connection through SSL
+    SMTPClient(QString host,
+               int port = 465,
+               int conTimeout = 30000,
+               int timeout = 60000);
 
     ~SMTPClient();
 
@@ -32,6 +38,7 @@ signals:
 
 private slots:
     void readyRead();
+    void abort();
 
 private:
     enum states{
@@ -49,14 +56,15 @@ private:
         Close
     };
 
-    int port_;
-    int timeout_;
     QString host_;
+    int port_;
+    int conTimeout_;
+    int timeout_;
 
     Email email_;
-    QTextStream *textStream_;
 
     QSslSocket *socket_;
+    QTextStream *textStream_;
 
     int state_;
     QString response_;
