@@ -25,18 +25,8 @@ MainWindow::~MainWindow()
  */
 void MainWindow::sendEmail()
 {
-    // Create the Sender
-    EmailAddress sender(ui->lineEditEmailFrom->text(),
-                        ui->lineEditPasswordFrom->text());
-
-    // Create the receiver
-    EmailAddress receiver(ui->lineEditEmailTo->text());
-
-    // Create the email
-    Email email(sender,
-                receiver,
-                ui->lineEditSubject->text(),
-                ui->textEditContent->toPlainText());
+    // Create the email object
+    Email email = createEmail();
 
     // Create the SMTPClient
     client_ = new SMTPClient(ui->lineEditHost->text(),
@@ -51,13 +41,39 @@ void MainWindow::sendEmail()
 }
 
 /**
+ * @brief Create and return an Email object based on the fields from the form.
+ */
+Email MainWindow::createEmail()
+{
+    // Create the credentials EmailAddress
+    EmailAddress credentials(ui->lineEditEmailCredentials->text(),
+                             ui->lineEditPasswordCredentials->text());
+
+    // Create the from EmailAddress
+    EmailAddress from(ui->lineEditEmailFrom->text());
+
+    // Create the to EmailAddress
+    EmailAddress to(ui->lineEditEmailTo->text());
+
+    // Create the email
+    Email email(credentials,
+                from,
+                to,
+                ui->lineEditSubject->text(),
+                ui->textEditContent->toPlainText());
+
+    return email;
+}
+
+/**
  * @brief Function responsible for clear all fields.
  * Note: it will not change the Host and Port fields.
  */
 void MainWindow::clearFields()
 {
+    ui->lineEditEmailCredentials->clear();
+    ui->lineEditPasswordCredentials->clear();
     ui->lineEditEmailFrom->clear();
-    ui->lineEditPasswordFrom->clear();
     ui->lineEditEmailTo->clear();
     ui->lineEditSubject->clear();
     ui->textEditContent->clear();

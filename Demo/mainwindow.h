@@ -28,6 +28,9 @@ private slots:
     void onStatus(Status::e status, QString errorMessage);
 
 private:
+    Email createEmail();
+
+private:
     Ui::MainWindow *ui;
     SMTPClient *client_;
 };

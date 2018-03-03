@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>497</width>
-    <height>503</height>
+    <width>496</width>
+    <height>630</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,8 +15,11 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>-1</number>
+    </property>
     <item>
-     <widget class="QGroupBox" name="groupBoxFrom">
+     <widget class="QGroupBox" name="groupBoxCredentials">
       <property name="title">
        <string>From</string>
       </property>
@@ -40,7 +43,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLabel" name="labelEmailFrom">
+          <widget class="QLabel" name="labelEmailCredentials">
            <property name="text">
             <string>E-mail</string>
            </property>
@@ -66,14 +69,14 @@
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QLineEdit" name="lineEditPasswordFrom">
+          <widget class="QLineEdit" name="lineEditPasswordCredentials">
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEditEmailFrom"/>
+          <widget class="QLineEdit" name="lineEditEmailCredentials"/>
          </item>
          <item row="2" column="1">
           <widget class="QLabel" name="labelHost">
@@ -83,7 +86,7 @@
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QLabel" name="labelPasswordFrom">
+          <widget class="QLabel" name="labelPasswordCredentials">
            <property name="text">
             <string>Password</string>
            </property>
@@ -95,6 +98,32 @@
             <string>Port</string>
            </property>
           </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBoxFrom">
+      <property name="title">
+       <string>From</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="labelEmailFrom">
+           <property name="text">
+            <string>E-mail</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEditEmailFrom"/>
          </item>
         </layout>
        </item>
@@ -241,13 +270,25 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>497</width>
-     <height>21</height>
+     <width>496</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>lineEditEmailCredentials</tabstop>
+  <tabstop>lineEditPasswordCredentials</tabstop>
+  <tabstop>lineEditHost</tabstop>
+  <tabstop>spinBoxPort</tabstop>
+  <tabstop>lineEditEmailFrom</tabstop>
+  <tabstop>lineEditEmailTo</tabstop>
+  <tabstop>lineEditSubject</tabstop>
+  <tabstop>textEditContent</tabstop>
+  <tabstop>pushButtonSend</tabstop>
+  <tabstop>pushButtonClear</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
