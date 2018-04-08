@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete client_;
+    client_->deleteLater();
     delete ui;
 }
 
@@ -103,6 +103,5 @@ void MainWindow::onStatus(Status::e status, QString errorMessage)
     }
 
     // Delete the client pointer
-    delete client_;
-    client_ = NULL;
+    client_->deleteLater();
 }
